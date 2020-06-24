@@ -1,15 +1,15 @@
-def BFS(graph, s):
+def bfs(graph, s):
     queue = []
     queue.append(s)
-    nodeSet = set()
-    nodeSet.add(s)
+    node_set = set()
+    node_set.add(s)
     while len(queue) > 0:
         vertex = queue.pop(0)
         nodes = graph[vertex]
         for node in nodes:
-            if node not in nodeSet:
+            if node not in node_set:
                 queue.append(node)
-                nodeSet.add(node)
+                node_set.add(node)
         print(vertex)
 
 if __name__ == "__main__":
@@ -22,4 +22,4 @@ if __name__ == "__main__":
         'f': ['d'],
     }
 
-    BFS(graph, 'a')
+    bfs(graph, 'a')

@@ -13,20 +13,20 @@ class MaxPriorityQueue:
         self.__swim(self.length)
         return
 
-    def extractMaxItem(self):
+    def extract_max_item(self):
         self.__swap(1, -1)
-        maxItem = self.heap.pop()
+        max_item = self.heap.pop()
         self.length -= 1
         self.__sink(1)
-        return maxItem
+        return max_item
 
-    def heapSort(self, arr):
-        sortedArr = []
+    def heap_sort(self, arr):
+        sorted_arr = []
         for item in arr:
             self.insert(item)
         while self.length > 0:
-            sortedArr.append(self.extractMaxItem())
-        return sortedArr
+            sorted_arr.append(self.extract_max_item())
+        return sorted_arr
     
     def __swap(self, index1, index2):
         self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
@@ -40,12 +40,12 @@ class MaxPriorityQueue:
 
     def __sink(self, index):
         while index * 2 <= self.length:
-            maxChildIndex = self.heap.index(max(self.heap[index * 2], self.heap[index * 2 + 1]))\
+            max_child_index = self.heap.index(max(self.heap[index * 2], self.heap[index * 2 + 1]))\
                 if (index * 2 + 1 <= self.length) else (index * 2)
-            if self.heap[index] >= self.heap[maxChildIndex]:
+            if self.heap[index] >= self.heap[max_child_index]:
                 break
-            self.__swap(index, maxChildIndex)
-            index = maxChildIndex
+            self.__swap(index, max_child_index)
+            index = max_child_index
         return
 
 def main():
@@ -56,9 +56,9 @@ def main():
     # pq.insert(6)
     # pq.insert(5)
     # print(pq.heap)
-    # print(pq.extractMaxItem())
+    # print(pq.extract_max_item())
     # print(pq.heap)
-    print(pq.heapSort([9, 4, 1, 3, 10, 5, 2, 8, 6, 7]))
+    print(pq.heap_sort([9, 4, 1, 3, 10, 5, 2, 8, 6, 7]))
 
 if __name__ == "__main__":
     main()

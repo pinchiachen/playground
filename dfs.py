@@ -1,22 +1,22 @@
-def DFS(graph, s):
+def dfs(graph, s):
     stack = []
     stack.append(s)
-    nodeSet = set()
-    nodeSet.add(s)
+    node_set = set()
+    node_set.add(s)
     while len(stack) > 0:
         vertex = stack.pop()
         nodes = graph[vertex]
         for node in nodes:
-            if node not in nodeSet:
+            if node not in node_set:
                 stack.append(node)
-                nodeSet.add(node)
+                node_set.add(node)
         print(vertex)
 
-def recursiveDFS(graph, s, queue=[]):
+def recursive_dfs(graph, s, queue=[]):
     queue.append(s)
     for i in graph[s]:
         if i not in queue:
-            recursiveDFS(graph, i, queue)
+            recursive_dfs(graph, i, queue)
     return queue
 
 if __name__ == "__main__":
@@ -29,6 +29,6 @@ if __name__ == "__main__":
         'f': ['d'],
     }
 
-    DFS(graph, 'a')
+    dfs(graph, 'a')
 
-    print(recursiveDFS(graph, 'a'))
+    print(recursive_dfs(graph, 'a'))
